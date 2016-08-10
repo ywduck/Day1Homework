@@ -29,13 +29,29 @@ namespace Day1Homework.Controllers
             return View();
         }
 
+        [ChildActionOnly]
         public ActionResult MoneyList() {
             List<MoneyRecViewModel> listMoneyRec = new List<MoneyRecViewModel>();
             listMoneyRec.Add(new MoneyRecViewModel()
             {
+                Id = "1",
                 MoneyType = "支出",
                 CreDate = DateTime.Now.ToString("yyyy/MM/dd"),
                 Amount = 300
+            });
+            listMoneyRec.Add(new MoneyRecViewModel()
+            {
+                Id = "2",
+                MoneyType = "支出",
+                CreDate = DateTime.Now.AddDays(1).ToString("yyyy/MM/dd"),
+                Amount = 1600
+            });
+            listMoneyRec.Add(new MoneyRecViewModel()
+            {
+                Id = "3",
+                MoneyType = "支出",
+                CreDate = DateTime.Now.AddDays(2).ToString("yyyy/MM/dd"),
+                Amount = 600
             });
 
             return View(listMoneyRec);

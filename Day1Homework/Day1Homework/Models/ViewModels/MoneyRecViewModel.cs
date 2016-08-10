@@ -7,6 +7,7 @@ namespace Day1Homework.Models.ViewModels
 {
     public class MoneyRecViewModel
     {
+        public string Id { get; set; }
         public string MoneyType { get; set; }
         public string CreDate { get; set; }
         public int Amount { get; set; }
