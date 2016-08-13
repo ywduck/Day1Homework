@@ -5,11 +5,14 @@ using System.Web;
 using System.Web.Mvc;
 
 using Day1Homework.Models.ViewModels;
+using Day1Homework.Service;
 
 namespace Day1Homework.Controllers
 {
     public class HomeController : Controller
     {
+        private MoneryService _MoneryService = new MoneryService();
+
         public ActionResult Index()
         {
             return View();
@@ -31,29 +34,7 @@ namespace Day1Homework.Controllers
 
         [ChildActionOnly]
         public ActionResult MoneyList() {
-            List<MoneyRecViewModel> listMoneyRec = new List<MoneyRecViewModel>();
-            listMoneyRec.Add(new MoneyRecViewModel()
-            {
-                Id = "1",
-                MoneyType = "支出",
-                CreDate = DateTime.Now.ToString("yyyy/MM/dd"),
-                Amount = 300
-            });
-            listMoneyRec.Add(new MoneyRecViewModel()
-            {
-                Id = "2",
-                MoneyType = "支出",
-                CreDate = DateTime.Now.AddDays(1).ToString("yyyy/MM/dd"),
-                Amount = 1600
-            });
-            listMoneyRec.Add(new MoneyRecViewModel()
-            {
-                Id = "3",
-                MoneyType = "支出",
-                CreDate = DateTime.Now.AddDays(2).ToString("yyyy/MM/dd"),
-                Amount = 600
-            });
-
+            List<MoneyRecViewModel> listMoneyRec = _MoneryService.GetAccountBook();
             return View(listMoneyRec);
         }
     }
